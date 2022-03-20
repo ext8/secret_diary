@@ -1,0 +1,17 @@
+name: secret_diary
+
+dependencies:
+
+  - pip:
+
+    # dependencies
+
+    - pyminizip
+    - click
+
+    # developement
+
+    - black
+    - pre-commit
+    - pylint
+    - isort
