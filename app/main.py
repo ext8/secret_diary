@@ -1,14 +1,23 @@
 #!/usr/bin/env python
 
-import os
-import sys
+"""
+SecretDiary or secd , your private diary
+"""
+
+
+__author__ = "ext8"
+__version__ = "0.1.0"
+__license__ = "MIT"
+
 
 import click
 
-from utils import util_list_command, util_get_command
+from utils import util_get_command, util_list_command
 
 
 class SecretDiary(click.MultiCommand):
+    """Base class for secret-diary"""
+
     def list_commands(self, ctx):
         return util_list_command("commands")
 
