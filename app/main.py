@@ -1,23 +1,22 @@
+#!/usr/bin/env python
 
-#!/usr/bin/env python3
-"""
-Secret Diary - the most loyal person you know is you.
-"""
+import os
+import sys
 
-__author__ = "ext8"
-__version__ = "0.1.0"
-__license__ = "MIT"
+import click
 
-
-import pyminizip # (file,None,zip_file,password,compression_lvl)
-import zipfile
+from utils import util_list_command, util_get_command
 
 
+class SecretDiary(click.MultiCommand):
+    def list_commands(self, ctx):
+        return util_list_command("commands")
+
+    def get_command(self, ctx, name):
+        return util_get_command(name)
+
+
+@click.command(cls=SecretDiary)
 def main():
-    """ Main entry point of the app """
-    print("hello world")
-
-
-if __name__ == "__main__":
-    """ This is executed when run from the command line """
-    main()
+    """lorem ipsum dolar sit amet."""
+    pass
