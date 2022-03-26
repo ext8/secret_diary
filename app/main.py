@@ -12,17 +12,19 @@ __license__ = "MIT"
 
 import click
 
-from utils import util_get_command, util_list_command
+from utils import CmdUtil
+
+Command = CmdUtil()
 
 
 class SecretDiary(click.MultiCommand):
     """Base class for secret-diary"""
 
     def list_commands(self, ctx):
-        return util_list_command("commands")
+        return Command.list(folder="commands")
 
     def get_command(self, ctx, name):
-        return util_get_command(name)
+        return Command.get(command_item=name)
 
 
 @click.command(cls=SecretDiary)

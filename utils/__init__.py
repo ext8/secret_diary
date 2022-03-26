@@ -1,9 +1,6 @@
-# load commands
-import imp
-from .core.get_command import util_get_command
-# list commands
-from .core.list_command import util_list_command
+# load & list commands
+from .core.main import CmdUtil
 # new diary
-from .new_diary.resolve_diary import util_new_diary
+from .initial.new_diary import NewDiary
 # sqlite3 context manager
 from .logging.util_sqlite3 import SQLog
