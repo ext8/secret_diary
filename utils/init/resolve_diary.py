@@ -1,3 +1,0 @@
-def util_new_diary(directory):
-
-    ...

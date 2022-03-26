@@ -1,4 +1,5 @@
 import click
+from utils import util_new_diary,SQLog
 
 
 class Context:
@@ -18,4 +19,5 @@ class Context:
 def main(ctx, directory: str) -> None:
     """create or reinitialize sec.d repo"""
     ctx.object = Context(directory)
-    click.echo()
+
+    config_dir , config_subdir = util_new_diary(directory=directory)
