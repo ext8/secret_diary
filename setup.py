@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="secret_diary",
-    version="0.1.0",
+    version="0.2.0",
     author="ext8",
     license="MIT",
     install_requires=["click", "pyminizip"],

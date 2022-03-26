@@ -17,6 +17,4 @@
 - meta data
 - stats
 - diary log
-
-[design]
 ```
