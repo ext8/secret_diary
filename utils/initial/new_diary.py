@@ -1,7 +1,8 @@
 import os
 
-class NewDiary():
-    def make(self,directory: str):
+
+class NewDiary:
+    def make(self, directory: str):
 
         # config dir -> .sec.d
         config_dir = f"{directory}//.sec.d"

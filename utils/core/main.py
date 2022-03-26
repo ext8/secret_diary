@@ -1,10 +1,16 @@
+"""`CmdUtil` class object for loading and listing all *.py files in app/commands"""
+
 import os
 
-class CmdUtil():
 
-    def get(self,command_item: str) -> None:
+class CmdUtil:
+    """`get()` loads all commands files \n
+    `list()` lists all command files"""
+
+    @staticmethod
+    def get(command_item: str) -> None:
         """
-        get :: loads click commands from /app/commands
+        loads click commands from app/commands
         """
         try:
             mod = __import__(
@@ -17,10 +23,10 @@ class CmdUtil():
             return
         return mod.main
 
-
-    def list(self,folder: str) -> list:
+    @staticmethod
+    def list(folder: str) -> list:
         """
-        list :: lists all files in app/commands
+        lists all files in app/commands
         """
         command_items = []
         command_dir = os.path.abspath(
