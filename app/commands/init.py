@@ -1,9 +1,10 @@
 """sced init :: command"""
-
 import time
 
 import click
-from utils import NewDiary, SQLog
+
+from utils import NewDiary
+from utils import SQLog
 
 diary = NewDiary()
 
@@ -44,4 +45,4 @@ def main(ctx, directory: str) -> None:
         """
 
         cur.execute("CREATE TABLE time_stamp ( SrNo int,LogType text,UnixTime int)")
-        cur.execute("INSERT INTO time_stamp VALUES (?, ?)", (1, "Open", unix_time))
+        cur.execute("INSERT INTO time_stamp VALUES (?, ?, ?)", (1, "Open", unix_time))

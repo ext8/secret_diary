@@ -2,13 +2,16 @@ import os
 
 
 class NewDiary:
-    def make(self, directory: str):
+    """Generates new diary file structure"""
 
-        # config dir -> .sec.d
+    @staticmethod
+    def make(directory: str):
+
         config_dir = f"{directory}//.sec.d"
-        os.mkdir(config_dir)
 
         config_subdir = ["logs", "meta-data", "stats"]
+
+        os.mkdir(config_dir)
 
         for file in config_subdir:
             os.mkdir(f"{config_dir}//{file}")
