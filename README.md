@@ -1,11 +1,14 @@
-# Secret Diary
+# <p style="text-align: center;">📚 Secret Diary</p>
+<div align="center">
+
 ![GitHub](https://img.shields.io/github/license/ext8/secret_diary?style=flat-square)
 ![Lines of code](https://img.shields.io/tokei/lines/github/ext8/secret_diary?style=flat-square)
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/ext8/secret_diary?style=flat-square)
 ![GitHub top language](https://img.shields.io/github/languages/top/ext8/secret_diary?style=flat-square)
 ![version](https://img.shields.io/badge/version-0.2.0-green?style=flat-square)
+</div>
 <br>
-<br>
+
 ```
 Your private diary is now protected with encryption.
 ```

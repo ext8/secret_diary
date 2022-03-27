@@ -6,7 +6,7 @@ setup(
     version="0.2.0",
     author="ext8",
     license="MIT",
-    install_requires=["click", "pyminizip"],
+    install_requires=["click", "rich", "pyminizip"],
     packages=find_packages(),
     entry_points={"console_scripts": ["secd=app.main:main"]},
     url="https://github.com/ext8/secret_diary/",
