@@ -68,10 +68,11 @@ $ secd --help
 ### tech stack
 
 
-| `function`  	| `libraries used`            	|
-|-----------	|--------------------	|
-| `zip files` 	| `pyminizip, zipfile` 	|
-| `tui`       	| `click, rich`        	|
+| `function`| `libraries used`   |
+|-----------|--------------------|
+| `*.7z` 	| `py7zr` 	         |
+| `cli`     | `click, rich`      |
+
 
 
 ### file structure

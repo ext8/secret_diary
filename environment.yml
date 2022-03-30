@@ -4,14 +4,17 @@ dependencies:
 
   - pip:
 
-    # dependencies
-    
-    - pyminizip
+    # .7z
+    - py7zr
+    # cli
     - click
+    # text-formatting
+    - rich
 
-    # developement
-
-    - black
+    # git-hook
     - pre-commit
+
+    # linting
     - pylint
     - isort
+    - black
