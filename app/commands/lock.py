@@ -1,7 +1,9 @@
 """sced lock :: command"""
-
-
 import click
+from Exceptions import ConfigMissing
+
+from utils import ConfigCheck
+from utils import SQLog
 from utils import ZipUtil
 
 _zip = ZipUtil()
@@ -28,7 +30,12 @@ class Context:
     "-d",
     "--directory",
     default="",
-    type=click.Path(exists=True, file_okay=False, dir_okay=True, resolve_path=True),
+    type=click.Path(
+        exists=True,
+        dir_okay=True,
+        file_okay=False,
+        resolve_path=True,
+    ),
     help="lock your private diary",
 )
 @click.option("-p", "--password", prompt=True, hide_input=True, type=str)
@@ -44,4 +51,12 @@ def main(ctx, directory: str, password: str) -> None:
     """
     ctx.object = Context(directory)
 
-    _zip.compress(directory=directory, password=password)
+    if ConfigCheck.verify(directory):
+
+        _zip.compress(directory=directory, password=password)
+
+        with SQLog() as cur:
+            cur
+
+    else:
+        raise ConfigMissing(directory)

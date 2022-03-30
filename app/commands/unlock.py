@@ -1,15 +1,18 @@
 """secd unlock :: command"""
-
 import click
+
+from utils import SQLog
 from utils import ZipUtil
 
 _zip = ZipUtil()
+
 
 class Context:
     """add:
     ```py
     ctx.object = Context(file)
     ```"""
+
     def __init__(self, file) -> None:
         """
         secd unlock -f {file}
@@ -24,9 +27,14 @@ class Context:
 @click.option(
     "-f",
     "--file",
-    type=click.Path(exists=True, file_okay=True, dir_okay=False, resolve_path=True)
+    type=click.Path(
+        exists=True,
+        file_okay=True,
+        dir_okay=False,
+        resolve_path=True,
+    ),
 )
-@click.option("-p", "--password", prompt=True, hide_input=True,type=str)
+@click.option("-p", "--password", prompt=True, hide_input=True, type=str)
 @click.pass_context
 def main(ctx, file: str, password: str) -> None:
     """```
@@ -42,3 +50,6 @@ def main(ctx, file: str, password: str) -> None:
     ctx.object = Context(file)
 
     _zip.extract(password, file)
+
+    with SQLog() as cur:
+        cur
