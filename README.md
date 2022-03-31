@@ -79,30 +79,36 @@ $ secd --help
 
 ```
 .
-├── .github
-│   └── workflows
-│       └── actions.yml
-├── .gitignore
-├── .pre-commit-config.yaml
 ├── app
 │   ├── commands
-│   │   ├── __init__.py
-│   │   └── init.py
-│   └── main.py
+│   │   ├──__init__.py
+│   │
+│   │   ├──init.py
+│   │   ├──lock.py
+│   │   └──unlock.py
+│   ├── Exceptions
+│   │   ├──__init__.py
+│   │   └── config_missing
+│   │       └──main.py
+│   └──main.py
 ├── docs
 │   └── TODO.md
 ├── environment.yml
 ├── LICENSE
 ├── README.md
 ├── requirements.txt
-├── setup.py
+├──setup.py
 └── utils
-    ├── __init__.py
+    ├──__init__.py
+    ├── config
+    │   └──config_check.py
     ├── core
-    │   └── main.py
-    ├── initial
-    │   └── new_diary.py
-    └── logging
-        └── sql_context_manager.py
-
+    │
+    │   └──commands.py
+    ├── init
+    │   └──new.py
+    ├── logging
+    │   └──context_manage.py
+    └── zip
+        └──main.py
 ```
