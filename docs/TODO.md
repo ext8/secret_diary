@@ -8,4 +8,5 @@
 
 - workflows and unit tests
 
-- pylint all files
+- pylint:
+    - None

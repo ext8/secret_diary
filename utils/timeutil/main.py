@@ -1,23 +1,26 @@
-""" """
-from datetime import date, datetime
+"""TimeUtil Class to format time,date in text and table"""
 
-__all__ = ["DateNow", "TimeNow"]
+from datetime import date, datetime
 
 
 class TimeUtil:
-    """ """
+    """Format time,date in text & table"""
+
+    __all__ = ["date_now", "time_now"]
 
     @staticmethod
-    def DateNow() -> str:
-        """ """
+    def date_now() -> str:
+        """gives date.today"""
         return date.today()
 
     @staticmethod
-    def TimeNow() -> str:
-        """ """
+    def time_now() -> str:
+        """gives datetime.now()"""
         return datetime.now().strftime("%H:%M:%S")
 
-    def TimeTable() -> str:
-        """ """
+    @staticmethod
+    def time_table() -> str:
+        """Note: not implemented yet\n
+        gives ascii table with timestamps"""
         # in progress
-        pass
+        return
