@@ -1,10 +1,10 @@
 """sced lock :: command"""
+import time
+
 import click
 from Exceptions import ConfigMissing
 
-from utils import ConfigCheck
-from utils import SQLog
-from utils import ZipUtil
+from utils import ConfigCheck, SQLog, ZipUtil
 
 _zip = ZipUtil()
 
@@ -36,7 +36,7 @@ class Context:
         file_okay=False,
         resolve_path=True,
     ),
-    help="lock your private diary",
+    help="lock archive",
 )
 @click.option("-p", "--password", prompt=True, hide_input=True, type=str)
 @click.pass_context
@@ -51,12 +51,16 @@ def main(ctx, directory: str, password: str) -> None:
     """
     ctx.object = Context(directory)
 
+    unix_time_file = f"{directory}//.sec.d//logs//time-stamp.db"
+
+    unix_time = int(time.time())
+
     if ConfigCheck.verify(directory):
 
-        _zip.compress(directory=directory, password=password)
+        with SQLog(unix_time_file) as cur:
+            cur.execute("INSERT INTO time_stamp VALUES(?,?,?)", (2, "lock", unix_time))
 
-        with SQLog() as cur:
-            cur
+        _zip.compress(directory=directory, password=password)
 
     else:
         raise ConfigMissing(directory)

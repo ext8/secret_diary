@@ -1,8 +1,9 @@
 """secd unlock :: command"""
+import time
+
 import click
 
-from utils import SQLog
-from utils import ZipUtil
+from utils import SQLog, ZipUtil
 
 _zip = ZipUtil()
 
@@ -32,6 +33,7 @@ class Context:
         file_okay=True,
         dir_okay=False,
         resolve_path=True,
+        help="unlock archive",
     ),
 )
 @click.option("-p", "--password", prompt=True, hide_input=True, type=str)
@@ -47,9 +49,13 @@ def main(ctx, file: str, password: str) -> None:
         password (str): password of archive
     """
 
+    unix_time_file = "./diary//.sec.d//logs//time-stamp.db"
+
+    unix_time = int(time.time())
+
     ctx.object = Context(file)
 
     _zip.extract(password, file)
 
-    with SQLog() as cur:
-        cur
+    with SQLog(unix_time_file) as cur:
+        cur.execute("INSERT INTO time_stamp VALUES(?,?,?)", (3, "unlock", unix_time))

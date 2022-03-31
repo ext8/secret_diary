@@ -1,20 +1,11 @@
-```ini
-[reqs]
+- timestamp viewer
 
-- encrypted
-- portable
-- zip
-- interactive pwd
-- encrypted file storage in .local
+- word counter
 
-[accept]
+- graph function
 
-- dir
-- file
+- custom exception classes
 
-[features]
+- workflows and unit tests
 
-- meta data
-- stats
-- diary log
-```
+- pylint all files

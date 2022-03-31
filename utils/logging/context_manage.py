@@ -1,7 +1,7 @@
 import sqlite3
 
 
-class SQLog(object):
+class SQLog:
     """SecretDiary :: sqlite3 context manager"""
 
     # credits :: https://gist.github.com/miku/6522074
