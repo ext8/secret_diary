@@ -5,7 +5,10 @@ from utils import NewDiary, SQLog, TimeUtil
 
 
 class Context:
-    """sced init -d DIRECTORY :: context"""
+    """add:
+    ```py
+    ctx.object = Context(directory)
+    ```"""
 
     def __init__(self, directory) -> None:
         self.directory = directory
@@ -21,7 +24,13 @@ class Context:
 )
 @click.pass_context
 def main(ctx, directory: str) -> None:
-    """create or reinitialize sec.d repo"""
+    """
+    creates config files
+
+    Args:
+        ctx : Context
+        directory (str): directory to gen config files
+    """
     ctx.object = Context(directory)
 
     NewDiary.make(directory)
@@ -39,5 +48,5 @@ def main(ctx, directory: str) -> None:
         cur.execute("CREATE TABLE time_stamp (LogType text,DateNow int,TimeNow int)")
         cur.execute(
             "INSERT INTO time_stamp VALUES (?, ?, ?)",
-            (0, TimeUtil.DateNow(), TimeUtil.TimeNow()),
+            (0, TimeUtil.date_now(), TimeUtil.time_now()),
         )
