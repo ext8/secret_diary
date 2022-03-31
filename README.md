@@ -65,7 +65,7 @@ $ secd --help
 
 [`MIT`](https://choosealicense.com/licenses/mit/)
 
-### depdencies
+### dependencies
 
 
 | `function`| `libraries used`   |
