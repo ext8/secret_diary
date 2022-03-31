@@ -1,1 +1,1 @@
-from .config_missing.main import ConfigMissing  # missing .sec.d
+from .ConfigMissing.main import ConfigMissing  # missing .sec.d

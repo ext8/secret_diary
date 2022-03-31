@@ -1,5 +1,9 @@
 class ConfigMissing(Exception):
     def __init__(self, path) -> None:
+        """
+        Args:
+            path (str): path to diary
+        """
         self.path = path
 
     def __str__(self) -> str:

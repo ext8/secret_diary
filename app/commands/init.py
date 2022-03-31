@@ -1,11 +1,7 @@
 """sced init :: command"""
-import time
-
 import click
 
-from utils import NewDiary, SQLog
-
-diary = NewDiary()
+from utils import NewDiary, SQLog, TimeUtil
 
 
 class Context:
@@ -28,20 +24,20 @@ def main(ctx, directory: str) -> None:
     """create or reinitialize sec.d repo"""
     ctx.object = Context(directory)
 
-    config_dir, config_subdir = diary.make(directory=directory)
+    NewDiary.make(directory)
 
-    unix_time_file = f"{config_dir}//{config_subdir[0]}//time-stamp.db"
-
-    unix_time = int(time.time())
-
-    with SQLog(unix_time_file) as cur:
+    with SQLog(f"{directory}//.sec.d//logs//time-stamp.db") as cur:
 
         """timestamps for opening / closing diary
 
-        sqlite> | SrNo 	| LogType 	| UnixTime 	|
-                |------	|--------	|----------	|
-                | 1.   	| Open   	| 83451751 	|
+
+        sqlite3> | LogType 	 | DateNow 	 | TimeNow 	|
+                 | --------- | --------- | -------- |
+                 | 0   	     | 1-11-2022 | 11:51 	|
         """
 
-        cur.execute("CREATE TABLE time_stamp ( SrNo int,LogType text,UnixTime int)")
-        cur.execute("INSERT INTO time_stamp VALUES (?, ?, ?)", (1, "init", unix_time))
+        cur.execute("CREATE TABLE time_stamp (LogType text,DateNow int,TimeNow int)")
+        cur.execute(
+            "INSERT INTO time_stamp VALUES (?, ?, ?)",
+            (0, TimeUtil.DateNow(), TimeUtil.TimeNow()),
+        )

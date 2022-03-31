@@ -71,7 +71,7 @@ $ secd --help
 | `function`| `libraries used`   |
 |-----------|--------------------|
 | `*.7z` 	| `py7zr` 	         |
-| `cli`     | `click, rich`      |
+| `cli`     | `click, rich,texttable,cjkwrap,wcwidth`      |
 
 
 

@@ -4,9 +4,7 @@ import time
 import click
 from Exceptions import ConfigMissing
 
-from utils import ConfigCheck, SQLog, ZipUtil
-
-_zip = ZipUtil()
+from utils import ConfigExists, SQLog, ZipUtil
 
 
 class Context:
@@ -55,12 +53,12 @@ def main(ctx, directory: str, password: str) -> None:
 
     unix_time = int(time.time())
 
-    if ConfigCheck.verify(directory):
+    if ConfigExists.verify(directory):
 
         with SQLog(unix_time_file) as cur:
             cur.execute("INSERT INTO time_stamp VALUES(?,?,?)", (2, "lock", unix_time))
 
-        _zip.compress(directory=directory, password=password)
+        ZipUtil.compress(directory=directory, password=password)
 
     else:
         raise ConfigMissing(directory)

@@ -10,6 +10,9 @@ dependencies:
     - click
     # text-formatting
     - rich
+    - texttable
+    - wcwidth
+    - cjkwrap
 
     # git-hook
     - pre-commit
