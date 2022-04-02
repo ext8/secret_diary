@@ -25,8 +25,11 @@ class Context:
 @click.pass_context
 def main(ctx, directory: str):
     """
-    gives statistcs on diary
+    displays stats for a diary
 
+    secd stats -d {directory}
+    """
+    """
     Args:
         ctx : Context
         directory (str): diary directory
@@ -35,4 +38,5 @@ def main(ctx, directory: str):
 
     with SQLog(f"{directory}//.sec.d//logs//time-stamp.db") as cur:
         cur.execute()
+
     # print(list(list(zip(*data))[0]))

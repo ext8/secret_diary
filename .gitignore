@@ -10,7 +10,7 @@ __pycache__/
 .sec.d/
 # C extensions
 *.so
-
+temp.txt
 # Distribution / packaging
 .Python
 build/

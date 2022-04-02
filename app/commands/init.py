@@ -27,6 +27,9 @@ def main(ctx, directory: str) -> None:
     """
     creates config files
 
+    secd init -d {directory}
+    """
+    """
     Args:
         ctx : Context
         directory (str): directory to gen config files

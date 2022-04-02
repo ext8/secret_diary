@@ -31,3 +31,7 @@ class SecretDiary(click.MultiCommand):
 def main():
     """lorem ipsum dolar sit amet."""
     pass
+
+
+if __name__ == "__main__":
+    main()

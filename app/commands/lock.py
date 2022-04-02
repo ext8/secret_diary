@@ -1,10 +1,9 @@
 """sced lock :: command"""
-import time
+
 
 import click
-from Exceptions import ConfigMissing
 
-from utils import ConfigExists, SQLog, ZipUtil
+from utils import ConfigExists, SQLog, TimeUtil, ZipUtil
 
 
 class Context:
@@ -14,12 +13,6 @@ class Context:
     ```"""
 
     def __init__(self, directory) -> None:
-        """```\n
-        secd lock -d {directory}\n```
-
-        Args:
-            directory (str): directory to archive
-        """
         self.directory = directory
 
 
@@ -27,21 +20,23 @@ class Context:
 @click.option(
     "-d",
     "--directory",
-    default="",
+    default=".",
     type=click.Path(
         exists=True,
         dir_okay=True,
         file_okay=False,
         resolve_path=True,
     ),
-    help="lock archive",
 )
 @click.option("-p", "--password", prompt=True, hide_input=True, type=str)
 @click.pass_context
-def main(ctx, directory: str, password: str) -> None:
-    """```\n
-    secd lock -d {directory} -p {password}\n```
+def main(ctx, directory: str, password: str):
+    """
+    locks diary
 
+    secd lock -d {directory} -p {password}
+    """
+    """
     Args:
         ctx : Context
         directory (str): directory to archive
@@ -49,14 +44,13 @@ def main(ctx, directory: str, password: str) -> None:
     """
     ctx.object = Context(directory)
 
-    unix_time_file = f"{directory}//.sec.d//logs//time-stamp.db"
-
-    unix_time = int(time.time())
-
     if ConfigExists.verify(directory):
 
-        with SQLog(unix_time_file) as cur:
-            cur.execute("INSERT INTO time_stamp VALUES(?,?,?)", (2, "lock", unix_time))
+        with SQLog(f"{directory}//.sec.d//logs//time-stamp.db") as cur:
+            cur.execute(
+                "INSERT INTO time_stamp VALUES(?,?,?)",
+                (1, TimeUtil.date_now(), TimeUtil.time_now()),
+            )
 
         ZipUtil.compress(directory=directory, password=password)
 

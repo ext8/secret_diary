@@ -1,5 +1,4 @@
-from setuptools import find_packages
-from setuptools import setup
+from setuptools import find_packages, setup
 
 setup(
     name="secret_diary",
@@ -7,7 +6,7 @@ setup(
     author="ext8",
     license="MIT",
     install_requires=["click", "rich", "py7zr"],
-    packages=find_packages(),
+    packages=find_packages,
     entry_points={"console_scripts": ["secd=app.main:main"]},
     url="https://github.com/ext8/secret_diary/",
     platforms="windows",
